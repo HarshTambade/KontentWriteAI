@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
+  ChevronDown,
+  ChevronRight,
   PenLine, 
-  FileText, 
-  Layout, 
-  Calendar,
-  RefreshCw,
+  Layout,
+  Youtube,
   Search,
-  Users,
-  Lightbulb,
-  ListChecks
+  Settings
 } from 'lucide-react';
 
 const navItems = [
@@ -34,38 +32,83 @@ const navItems = [
       { name: 'SEO Optimized Post', path: '/tools/seo-post' },
       { name: 'Human Written Post', path: '/tools/human-post' },
     ]
+  },
+  {
+    title: 'YouTube Tools',
+    icon: Youtube,
+    items: [
+      { name: 'Video Intro Script', path: '/youtube/intro-script' },
+      { name: 'Content Planner', path: '/youtube/content-planner' },
+      { name: 'Title & Thumbnail Ideas', path: '/youtube/title-thumbnail' },
+      { name: 'Script Creator', path: '/youtube/script-creator' },
+    ]
+  },
+  {
+    title: 'SEO Tools',
+    icon: Search,
+    items: [
+      { name: 'Meta Title & Description', path: '/seo/meta' },
+      { name: 'Topic Map', path: '/seo/topic-map' },
+      { name: 'Clickbait Title Generator', path: '/seo/clickbait' },
+      { name: 'Long Tail Keywords', path: '/seo/long-tail' },
+      { name: 'Related Keywords & OnPage', path: '/seo/related-keywords' },
+      { name: 'Keyword Clustering', path: '/seo/clustering' },
+      { name: 'Ranking Guidelines', path: '/seo/ranking' },
+    ]
   }
 ];
 
 export const Sidebar = () => {
+  const [openSections, setOpenSections] = useState<string[]>(['Blog Workflow']);
+
+  const toggleSection = (title: string) => {
+    setOpenSections(prev => 
+      prev.includes(title) 
+        ? prev.filter(t => t !== title)
+        : [...prev, title]
+    );
+  };
+
   return (
     <aside className="w-64 bg-white border-r border-gray-200 min-h-screen">
       <div className="p-4">
-        <nav className="space-y-6">
+        <nav className="space-y-2">
           {navItems.map((section) => (
-            <div key={section.title}>
-              <div className="flex items-center gap-2 mb-2 text-gray-600">
-                <section.icon size={18} />
-                <h2 className="font-semibold">{section.title}</h2>
-              </div>
-              <ul className="space-y-1">
-                {section.items.map((item) => (
-                  <li key={item.path}>
-                    <NavLink
-                      to={item.path}
-                      className={({ isActive }) =>
-                        `block px-4 py-2 text-sm rounded-md ${
-                          isActive
-                            ? 'bg-blue-50 text-blue-700'
-                            : 'text-gray-600 hover:bg-gray-50'
-                        }`
-                      }
-                    >
-                      {item.name}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
+            <div key={section.title} className="border-b border-gray-100 last:border-0">
+              <button
+                onClick={() => toggleSection(section.title)}
+                className="flex items-center justify-between w-full px-2 py-3 text-gray-600 hover:bg-gray-50 rounded-md"
+              >
+                <div className="flex items-center gap-2">
+                  <section.icon size={18} />
+                  <span className="font-medium">{section.title}</span>
+                </div>
+                {openSections.includes(section.title) ? (
+                  <ChevronDown size={16} />
+                ) : (
+                  <ChevronRight size={16} />
+                )}
+              </button>
+              {openSections.includes(section.title) && (
+                <ul className="ml-8 space-y-1 pb-3">
+                  {section.items.map((item) => (
+                    <li key={item.path}>
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `block px-3 py-2 text-sm rounded-md ${
+                            isActive
+                              ? 'bg-blue-50 text-blue-700'
+                              : 'text-gray-600 hover:bg-gray-50'
+                          }`
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </nav>
