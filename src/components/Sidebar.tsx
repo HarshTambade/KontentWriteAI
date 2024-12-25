@@ -7,7 +7,7 @@ import {
   Layout,
   Youtube,
   Search,
-  Settings
+  ShoppingBag
 } from 'lucide-react';
 
 const navItems = [
@@ -54,6 +54,28 @@ const navItems = [
       { name: 'Related Keywords & OnPage', path: '/seo/related-keywords' },
       { name: 'Keyword Clustering', path: '/seo/clustering' },
       { name: 'Ranking Guidelines', path: '/seo/ranking' },
+    ]
+  },
+  {
+    title: 'E-commerce Tools',
+    icon: ShoppingBag,
+    items: [
+      { name: 'Product Description', path: '/ecommerce/product-description' },
+      { name: 'Tagline Generator', path: '/ecommerce/tagline' },
+      { name: 'Amazon Description', path: '/ecommerce/amazon-description' },
+      { name: 'Product Comparison', path: '/ecommerce/product-comparison' },
+      { name: 'Product Updates', path: '/ecommerce/product-updates' },
+      { name: 'Buying Guide', path: '/ecommerce/buying-guide' },
+      { name: 'Onboarding Email', path: '/ecommerce/onboarding-email' },
+      { name: 'Sales Campaign', path: '/ecommerce/sales-campaign' },
+      { name: 'Thank You Notes', path: '/ecommerce/thank-you' },
+      { name: 'Popup Messages', path: '/ecommerce/popup' },
+      { name: 'Testimonial Request', path: '/ecommerce/testimonial' },
+      { name: 'Loyalty Program', path: '/ecommerce/loyalty' },
+      { name: 'Subscription Reminder', path: '/ecommerce/subscription' },
+      { name: 'Return/Refund Emails', path: '/ecommerce/return' },
+      { name: 'Influencer Outreach', path: '/ecommerce/influencer' },
+      { name: 'UGC Ad Scripts', path: '/ecommerce/ugc' },
     ]
   }
 ];
