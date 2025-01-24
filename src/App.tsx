@@ -45,6 +45,11 @@ import { SalesCampaign } from './pages/ecommerce/SalesCampaign';
 import { ThankYou } from './pages/ecommerce/ThankYou';
 import { PopupMessage } from './pages/ecommerce/PopupMessage';
 import { TestimonialRequest } from './pages/ecommerce/TestimonialRequest';
+import { LoyaltyProgram } from './pages/ecommerce/LoyaltyProgram';
+import { SubscriptionReminder } from './pages/ecommerce/SubscriptionReminder';
+import { ReturnEmail } from './pages/ecommerce/ReturnEmail';
+import { InfluencerOutreach } from './pages/ecommerce/InfluencerOutreach';
+import { UgcAdScript } from './pages/ecommerce/UgcAdScript';
 
 const App = () => {
   return (
@@ -99,6 +104,11 @@ const App = () => {
               <Route path="/ecommerce/thank-you" element={<ThankYou />} />
               <Route path="/ecommerce/popup" element={<PopupMessage />} />
               <Route path="/ecommerce/testimonial" element={<TestimonialRequest />} />
+              <Route path="/ecommerce/loyalty" element={<LoyaltyProgram />} />
+              <Route path="/ecommerce/subscription" element={<SubscriptionReminder />} />
+              <Route path="/ecommerce/return" element={<ReturnEmail />} />
+              <Route path="/ecommerce/influencer" element={<InfluencerOutreach />} />
+              <Route path="/ecommerce/ugc" element={<UgcAdScript />} />
             </Routes>
           </main>
         </div>
